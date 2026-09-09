@@ -1,0 +1,138 @@
+{
+  "name": "Product",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "price": {
+      "type": "number"
+    },
+    "compareAtPrice": {
+      "type": "number"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Co-ord Set",
+        "Ready to Wear",
+        "Luxury Fits",
+        "Festival Edit",
+        "Modern Closet"
+      ]
+    },
+    "fabric": {
+      "type": "string"
+    },
+    "fabricWeight": {
+      "type": "string",
+      "enum": [
+        "Light",
+        "Medium",
+        "Heavy"
+      ]
+    },
+    "colors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sizes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sizeChart": {
+      "type": "array",
+      "description": "Per-size body measurements (in inches) for this product's fit guide",
+      "items": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "type": "string",
+            "description": "e.g. XS, S, M, L, XL"
+          },
+          "bust": {
+            "type": "number"
+          },
+          "waist": {
+            "type": "number"
+          },
+          "hip": {
+            "type": "number"
+          },
+          "shoulder": {
+            "type": "number"
+          },
+          "length": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "size"
+        ]
+      }
+    },
+    "sizeChartImage": {
+      "type": "string",
+      "description": "Uploaded image (file URL) for this product's size chart",
+      "format": "file"
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "badge": {
+      "type": "string",
+      "enum": [
+        "Bestseller",
+        "New",
+        "Limited Edition",
+        "Sale",
+        ""
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "fabricCare": {
+      "type": "string"
+    },
+    "inStock": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "name",
+    "slug",
+    "price",
+    "category",
+    "images"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": null,
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
